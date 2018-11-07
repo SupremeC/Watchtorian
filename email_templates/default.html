@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>RPI-B status report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body style="margin: 0; padding: 0;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td style="padding: 10px 0 30px 0;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+                   style="border: 1px solid #cccccc; border-collapse: collapse;">
+                <tr>
+                    <td align="center" bgcolor="#70bbd9"
+                        style="padding: 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;">
+                        <img src="https://berglundrost.se/watchtorian_imgs/email_header.png" alt="Creating Email Magic"
+                             width="600" height="230" style="display: block;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td style="color: #153643; font-family: Arial, sans-serif; font-size: 24px;">
+                                    <b>Status Report - {report_date}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px 0 30px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+                                    A summary of system <b>{host}</b> status since the last report that was sent on
+                                    {last_report_date}. The first section shows the average value for
+                                    the time period. The last section displays the aggregated vales as a history data
+                                    table.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%"
+                                           style="font-size:22px;">
+                                        <tr>
+                                            <td width="260" valign="middle">
+                                                <img src="https://berglundrost.se/watchtorian_imgs/cpu2.png"
+                                                     title="CPU load" alt="CPU load" width="20%"
+                                                     style="margin-right:10px;vertical-align:middle;display: inline-block;"/>
+                                                {cpu_load}% <sup><i style="font-size:16px">({cpu_load_change})</i></sup>
+                                            </td>
+                                            <td valign="middle">
+                                                <img src="https://berglundrost.se/watchtorian_imgs/temp.png"
+                                                     title="CPU temperature" alt="CPU temperature" width="20%"
+                                                     style="margin-right:10px;vertical-align:middle;display: inline-block;"/>
+                                                {cpu_temp} &#176;C <sup><i
+                                                    style="font-size:16px">({cpu_temp_change})</i></sup>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="260" valign="middle">
+                                                <img src="https://berglundrost.se/watchtorian_imgs/disk.png"
+                                                     title="Disk usage" alt="disk usage" width="20%"
+                                                     style="margin-right:10px;vertical-align:middle;display: inline-block;"/>
+                                                {disk}% <sup><i style="font-size:16px">({disk_change})</i></sup>
+                                            </td>
+                                            <td valign="middle">
+                                                <img src="https://berglundrost.se/watchtorian_imgs/internet.png"
+                                                     title="internet uptime" alt="internet uptime" width="20%"
+                                                     style="margin-right:10px;vertical-align:middle;display: inline-block;"/>
+                                                {internet}% <sup><i style="font-size:16px">({internet_change})</i></sup>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="58px">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width="100%">
+                                        <thead style="font-weight:bold">
+                                        <tr>
+                                            <td title="Report date">Date</td>
+                                            <td title="CPU load">CPU %</td>
+                                            <td title="CPU temperature">CPU &#176;</td>
+                                            <td title="Disk usage">DISK</td>
+                                            <td title="internet uptime">INTERNET</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {hist_table_rows}
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#355c6f" style="color:white;padding: 30px 30px 30px 30px;">
+                        ® Watchtorian 2018 <br/>
+                        <a style="color:#fff" href="https://berglundrost.se">berglundrost.se</a> &nbsp;
+                        <a style="color:#fff" href="https://ha.berglundrost.se">ha.berglundrost.se</a> &nbsp;
+                        <a style="color:#fff" href="https://david.berglundrost.se">david.berglundrost.se</a> &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
