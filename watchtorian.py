@@ -3,6 +3,7 @@
 
 import configparser
 import logging.config
+import os
 from datetime import datetime as dt
 
 import httplib2
@@ -15,8 +16,17 @@ from customtypes import PollData
 from datalogger import DataLogger
 from mqtthelper import mqtt_publish
 
+
+def script_home_path():
+    return os.path.dirname(os.path.realpath(__file__))
+
+
+def path_join(filename, basedir=script_home_path()):
+    return os.path.join(basedir, filename)
+
+
 # FIXED CONSTANTS
-LOGGING_CONFIG_FILE = "logging_config.ini"
+LOGGING_CONFIG_FILE = path_join("logging_config.ini")
 APP_CONFIG_FILE = "config.ini"
 DATA_LOG_FILE = "poll_data/polldata.dat"
 
@@ -96,7 +106,8 @@ try:
             service = discovery.build('gmail', 'v1', http=http, cache_discovery=False)
 
             # build html email from a template
-            html_email = gmail.apply_email_template(last_report, config.get("app", "name"), data, dl)
+            html_email = gmail.apply_email_template(
+                last_report, config.get("app", "name"), data, dl, path_join("email_templates/default.html"))
 
             gmail.send_email_message(service, email_config["user"],
                                      gmail.create_email_message(email_config["from_address"],
