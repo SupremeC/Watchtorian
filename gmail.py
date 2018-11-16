@@ -98,7 +98,7 @@ def get_email_credentials():
     return credentials
 
 
-def apply_email_template(last_email, host: str, data, datalog, filename: str = "email_templates/default.html"):
+def apply_email_template(last_email, host: str, data, datalog, filename: str):
     """
 
     :param last_email: date of last email
@@ -149,7 +149,7 @@ def apply_email_template(last_email, host: str, data, datalog, filename: str = "
     return src.replace("{hist_table_rows}", rows)
 
 
-def get_email_template(filename: str = "email_templates/default.html", encoding: str = "utf-8") -> str:
+def get_email_template(filename: str, encoding: str = "utf-8") -> str:
     """
     Returns the entire content of the file.
     :param filename: path (absolute or relative) and filename to the email template
@@ -157,6 +157,8 @@ def get_email_template(filename: str = "email_templates/default.html", encoding:
     :rtype: str
     :return: email template (entire content of file)
     """
+    filename = path_join(filename)
+
     with codecs.open(filename, "r", encoding) as file:
         return file.read()
     pass
@@ -184,13 +186,20 @@ def delta_rep(new: float, old: float, positive_is_good: bool = True) -> str:
 def get_n_last_value(what: str, arr: list, index: int = 0):
     if not arr:
         raise ValueError
-    if len(arr) < index:
+    if len(arr) <= index:
         return None
 
     # sort based on date
     arr.sort(key=lambda x: x.when, reverse=True)
     return getattr(arr[index], what)
 
+
+def script_home_path():
+    return os.path.dirname(os.path.realpath(__file__))
+
+
+def path_join(filename, basedir=script_home_path()):
+    return os.path.join(basedir, filename)
 
 '''
 import smtplib
